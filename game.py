@@ -1,5 +1,12 @@
+class GameState():
+	pass
+
+class Turn():
+	pass
+
 class Character():
 	''' Base class for a character. '''
+
 	turn_mana = 0
 	health = 1
 	is_alive = True
@@ -14,13 +21,27 @@ class Character():
 		''' Adds a card to the players card inventory '''
 		self.cards.append(card)
 
+	def heal(self, card):
+                heal_amt = card.heal_amt
+                self.health += heal_amt
+
+
 	def attack(self, card, enemy):
-		''' Each character can attack the enemy. The damange that
-		comes from the card will be dealt unto the enemy. '''
-		damage = card.damage
-		enemy.health -= damage
-		if enemy.health <= 0:
-			enemy.death()
+                ''' Each character can attack the enemy. The damange that
+                comes from the card will be dealt unto the enemy. '''
+                damage = card.damage
+                enemy.health -= damage
+                if enemy.health <= 0:
+                        enemy.death()
+
+	def use_card(self, card, target=None):
+		'''
+		Uses card on a target.
+		'''
+		if card.type == 'Melee':
+			self.attack(card, target)
+		elif card.type == 'Heal':
+			self.heal(card)
 	
 	def death(self):
 		''' If health reaches 0 then this character died. '''
@@ -72,9 +93,10 @@ class HealCard(Card):
 		super().__init__(name, mana)
 		self.heal_amt = heal_amt
 
-	
+
 
 # For testing purposes.
 luna = Hero('Luna', 100, 10)
 stinky = Enemy('Stinky', 15, 5)
 banana = MeleeCard('Banana', 10, 2)
+catnip = HealCard('CatNip', 5, 10)
