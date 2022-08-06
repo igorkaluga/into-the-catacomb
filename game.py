@@ -11,6 +11,7 @@ class Character():
 		self.turn_mana = turn_mana
 	
 	def add_card(self, card):
+		''' Adds a card to the players card inventory '''
 		self.cards.append(card)
 
 	def attack(self, card, enemy):
