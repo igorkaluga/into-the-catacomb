@@ -40,25 +40,41 @@ class Enemy(Character):
 		super().__init__(name, health, turn_mana)
 
 class Card():
-	''' The base class for a card. ''' 
+	'''
+	The base class for a card.
+	Only has damage and mana use.
+	''' 
 	damage = 0
+	mana = 0
 
-	def __init__(self, name, damage):
+	def __init__(self, name, mana):
 		self.name = name
-		self.damage = damage
+		self.mana = mana
 
 class MeleeCard(Card):
-	''' Child of the Card class, is melee. ''' 
-		
+	''' Child of the Card class, is melee. '''	
 	type = 'Melee'
 
-	def __init__(self, name, damage, effect=None):
+	def __init__(self, name, damage, mana, effect=None):
 		''' A melee card, physical damage. ''' 
-		super().__init__(name, damage)
+		super().__init__(name, mana)
+		self.damage = damage
 		self.effect = effect
 
+class HealCard(Card):
+	'''
+	Increases health of the character that it is used on.
+	'''
+
+	type = 'Heal'
+
+	def __init__(self, name, mana, heal_amt):
+		super().__init__(name, mana)
+		self.heal_amt = heal_amt
+
+	
 
 # For testing purposes.
 luna = Hero('Luna', 100, 10)
 stinky = Enemy('Stinky', 15, 5)
-banana = MeleeCard('Banana', 10)
+banana = MeleeCard('Banana', 10, 2)
