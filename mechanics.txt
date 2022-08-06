@@ -1,0 +1,16 @@
+
+Main Mechanic:
+	Crawling the dungeon:
+		
+	Inside of a level:
+		Player will be taking turns with the enemies inside each level. Whoever attacks first will depend on the sneak l		evel of the player??
+		
+		After the player uses up their amount of turns the enemy will take their turn. Each enemy has a set amount of ma		na that they can use up per turn. 
+
+Level:
+	As the player traverses the catacombs(dungeon), they will be pulled into different engagements with the enemy. Each one 	can be considered a "level". Inside of the level there will be random enemies with random cards.
+
+Classes:
+	Character class:
+        	Hero class
+        	Enemy class
